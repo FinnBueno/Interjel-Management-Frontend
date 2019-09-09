@@ -1,0 +1,111 @@
+<div class="modal-header bg-body">
+  <h5 class="modal-title" id="addMemberLabel">Voeg lid toe</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body widget">
+  <form>
+
+    <div class="row">
+      <div class="col">
+        <label for="firstname">Voornaam</label>
+        <input type="text" class="form-control" id="firstname" name="firstname" required maxlength="64"
+               minlength="3" [(ngModel)]="firstname" #firstnameField="ngModel" placeholder="Voornaam">
+      </div>
+      <div class="col">
+        <label for="lastname">Achternaam</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" required maxlength="64"
+               minlength="3" [(ngModel)]="lastname" #lastnameField="ngModel" placeholder="Achternaam">
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" name="email" required maxlength="64"
+               [(ngModel)]="email" placeholder="Email" #emailField="ngModel">
+      </div>
+      <div class="col">
+        <label for="phone">Telefoon</label>
+        <input type="number" class="form-control" id="phone" name="phone" required max="699999999" minlength="600000000"
+               [(ngModel)]="phone" placeholder="Telefoon nummer" #phoneField="ngModel">
+      </div>
+      <div class="col">
+        <label for="birth">Geboortedatum</label>
+        <input type="date" class="form-control" id="birth" name="birth" required [(ngModel)]="birth" placeholder="Geboortedatum" #birthField="ngModel" useValueAsDate>
+      </div>
+    </div>
+
+    <hr class="m-4"/>
+
+    <div class="row mt-2">
+      <div class="col">
+        <label for="address">Adres</label>
+        <input type="text" class="form-control" id="address" name="address" required maxlength="64"
+               [(ngModel)]="address" placeholder="Adres" #addressField="ngModel">
+      </div>
+      <div class="col">
+        <label for="postal">Postcode</label>
+        <input type="text" class="form-control" id="postal" name="postal" required maxlength="6" minlength="6"
+               [(ngModel)]="postalCode" placeholder="Postcode" #postalCodeField="ngModel">
+      </div>
+      <div class="col">
+        <label for="town">Woonplaats</label>
+        <input type="text" class="form-control" id="town" name="town" required maxlength="64"
+               [(ngModel)]="town" placeholder="Woonplaats" #townField="ngModel">
+      </div>
+    </div>
+
+    <hr class="m-4"/>
+
+    <div class="row">
+      <div class="col">
+        <label for="comment">Opmerking</label>
+        <textarea name="comment" id="comment" rows="3" [(ngModel)]="notes" class="form-control" placeholder="Opmerking"></textarea>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="bg-danger alert form-alert">
+      <div *ngIf="firstnameField.invalid && (firstnameField.dirty || firstnameField.touched)">
+        <div *ngIf="firstnameField.errors.required">Voornaam is verplicht</div>
+        <div *ngIf="firstnameField.errors.minlength">Voornaam moet minimaal 3 tekens bevatten</div>
+      </div>
+
+      <div *ngIf="lastnameField.invalid && (lastnameField.dirty || lastnameField.touched)">
+        <div *ngIf="lastnameField.errors.required">Achternaam is verplicht</div>
+        <div *ngIf="lastnameField.errors.minlength">Achternaam moet minimaal 3 tekens bevatten</div>
+      </div>
+
+      <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)">
+        <div *ngIf="emailField.errors.required">Email is verplicht</div>
+      </div>
+
+      <div *ngIf="phoneField.invalid && (phoneField.dirty || phoneField.touched)">
+        <div *ngIf="phoneField.errors.required">Telefoon nummer is verplicht</div>
+        <div *ngIf="phoneField.errors.min || phoneField.errors.max">Telefoon nummer is 9 tekens en begint met een 6</div>
+      </div>
+
+      <div *ngIf="addressField.invalid && (addressField.dirty || addressField.touched)">
+        <div *ngIf="addressField.errors.required">Adres is verplicht</div>
+      </div>
+
+      <div *ngIf="postalCodeField.invalid && (postalCodeField.dirty || postalCodeField.touched)">
+        <div *ngIf="postalCodeField.errors.required">Postcode is verplicht</div>
+        <div *ngIf="postalCodeField.errors.minlength">Postcode is minimaal 6 tekens</div>
+        <div *ngIf="postalCodeField.errors.maxlength">Postcode is maximaal 6 tekens</div>
+      </div>
+
+      <div *ngIf="townField.invalid && (townField.dirty || townField.touched)">
+        <div *ngIf="townField.errors.required">Woonplaats is verplicht</div>
+      </div>
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer bg-body">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
+  <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addMember()">Opslaan</button>
+</div>

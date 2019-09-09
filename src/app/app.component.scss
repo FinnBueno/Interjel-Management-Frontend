@@ -1,0 +1,39 @@
+@import "../_vars";
+
+$imageSize: 60px;
+.logo {
+  width: $imageSize;
+  height: $imageSize;
+}
+.name {
+  width: 150px;
+  height: 35px;
+  margin-left: 14px;
+}
+
+#header {
+  height: $headerHeight;
+}
+
+.large-padding > img {
+  margin-top: 13px;
+}
+
+$eddySize: 300px;
+.eddy {
+  z-index: 9999;
+  display: block;
+  transition: display 0.2s;
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  .inside-eddy {
+    position: relative;
+    top: -2%;
+    left: -50%;
+  }
+}
+
+.eddy-hide {
+  display: none;
+}

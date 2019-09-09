@@ -1,0 +1,28 @@
+<div class="modal fade" id="startEvening" tabindex="-1" role="dialog" aria-labelledby="startEveningLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content bg-body">
+      <div class="modal-header bg-body">
+        <h5 class="modal-title" id="addMemberLabel">Start avond</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body widget">
+        <form>
+
+          <div class="row">
+            <div class="col">
+              <label for="notes">Notities</label>
+              <textarea id="notes" class="form-control bg-body" style="border-width: 0; color: white;" rows="3" name="notities" [(ngModel)]="notes"></textarea>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer bg-body">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
+        <button type="button" class="btn btn-primary" (click)="startEvening()" data-dismiss="modal">Start</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<!-- menu bar -->
+<div class="row">
+  <div class="col-auto mr-auto">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="filterInput">Filter</label>
+          <input type="email" class="form-control" id="filterInput" aria-describedby="filter" placeholder="Filter..."
+                 [(ngModel)]="searchTerm">
+          <small id="filter" class="form-text text-muted">Filteren gebeurt op naam, leeftijd, email, adres en telefoonnummer</small>
+        </div>
+      </div>
+      <div class="col">
+        <div class="dropdown">
+          <label for="sort">Sorteer</label><br>
+          <button id="sort" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sorteer opties
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" (click)="sort('name', false)">Naam (aflopend)</a>
+            <a class="dropdown-item" (click)="sort('name', true)">Naam (oplopend)</a>
+            <a class="dropdown-item" (click)="sort('payment', false)">Betaling (aflopend)</a>
+            <a class="dropdown-item" (click)="sort('payment', true)">Betaling (oplopend)</a>
+            <a class="dropdown-item" (click)="sort('age', false)">Leeftijd (aflopend)</a>
+            <a class="dropdown-item" (click)="sort('age', true)">Leeftijd (oplopend)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary btn-lg mt-4" (click)="openNewMemberInput()" data-toggle="modal" data-target="#modal">Voeg lid toe</button>
+  </div>
+</div>
+
+<hr class="mb-3 mt-4">
+
+<!-- overview -->
+<div class="scrollable">
+  <div class="row">
+    <div class="col-lg-4 col-xl-3 col-md-6 col-sm-12" *ngFor="let member of getMembers() | memberFilter: searchTerm | archived: false; let last = last">
+      <div class="card bg-widget mb-3 clickable" (click)="openMemberOverview(member)" data-toggle="modal" data-target="#modal">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto mr-auto">
+              <h4 class="card-title">{{member.getFullName()}} <i style="font-size: 20px; vertical-align: 10%;" class="fa fa-fw ml-1 fa-crown" *ngIf="member.type === 1"></i></h4>
+            </div>
+          </div>
+          <p class="card-text" [ngClass]="{'text-warning': member.age < 18}">Leeftijd: {{member.age}}</p>
+        </div>
+
+        <div class="card-footer bg-success" *ngIf="member.paymentStatus === 0">
+          <i class="fa fa-check mr-3"></i>Betaald
+        </div>
+
+        <div class="card-footer bg-warning" *ngIf="member.paymentStatus === 1">
+          <i class="fa fa-exclamation mr-3"></i>Niet betaald
+        </div>
+
+        <div class="card-footer bg-danger" *ngIf="member.paymentStatus === 2">
+          <i class="fa fa-exclamation mr-3"></i>Betaling loopt achter
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row justify-content-center">
+    <button class="btn btn-primary btn-md mt-3" (click)="loadMoreMembers()">Laad meer leden</button>
+  </div> -->
+  <hr>
+  <div class="row">
+    <div class="col-lg-4 col-xl-3 col-md-6 col-sm-12" *ngFor="let member of getMembers() | archived: true">
+      <div class="card bg-widget mb-3 disabled clickable" (click)="openMemberOverview(member)" data-toggle="modal" data-target="#modal">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto mr-auto">
+              <h4 class="card-title">{{member.getFullName()}} <i style="font-size: 20px; vertical-align: 10%;" class="fa fa-fw ml-1 fa-crown" *ngIf="member.type === 1"></i></h4>
+            </div>
+          </div>
+          <p class="card-text">Leeftijd: {{member.age}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.active-icon {
+  height: 0;
+  width: 100%;
+  text-align: right;
+  i {
+    color: rgb(229, 212, 80);
+    left: 99%;
+    top: 0;
+    animation: swing 1.5s infinite;
+    position: absolute;
+  }
+}
+@keyframes swing {
+
+  $offset-left: -40%;
+  0%, 100% {
+    transform: translate($offset-left, -50%) rotate(10deg);
+  }
+  50% {
+    transform: translate($offset-left, -50%) rotate(-10deg);
+  }
+}

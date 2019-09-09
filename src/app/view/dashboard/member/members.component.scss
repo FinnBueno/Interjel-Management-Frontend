@@ -1,0 +1,14 @@
+@import "../../../../vars";
+
+.card.clickable {
+  cursor: pointer;
+}
+
+.form-alert > div {
+  color: $body-bg;
+  font-weight: bold;
+}
+
+div.disabled {
+  opacity: 0.4;
+}

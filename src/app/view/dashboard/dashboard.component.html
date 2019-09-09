@@ -1,0 +1,42 @@
+<div class="container-fluid px-0 h-100">
+  <div class="row vh-100 collapse show no-gutters d-flex h-100 position-relative">
+    <div class="col-3 p-0 h-100 text-white w-sidebar navbar-collapse collapse d-none d-md-flex sidebar">
+      <div class="navbar-dark bg-dark position-fixed h-100 w-sidebar">
+        <ul class="nav flex-column flex-nowrap text-truncate">
+          <div *ngFor="let page of pages | pageFilter : ''; let last = last">
+
+            <div class="nav-item pl-4 pr-4 pt-3 pb-2 mb-4 mt-4"
+                  (click)="navigate(page)"
+                  [ngClass]="{'widget': url !== undefined && url.startsWith(page.name)}">
+              <div class="hover">
+                <p class="h5"><i class="fa fa-fw mr-2" [ngClass]="page.icon"></i>{{page.niceName}}</p>
+              </div>
+            </div>
+    
+            <hr class="m-0 ml-4 mr-4" *ngIf="page !== last"/>
+    
+          </div>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="row">
+        <div class="col pt-4">
+            <h1 class="display-1 break-word" *ngIf="header !== undefined">{{header}}</h1>
+            <hr class="mb-4" *ngIf="header !== undefined"/>
+            <router-outlet name="widget"></router-outlet>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal base route -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content bg-body">
+      <router-outlet name="modal"></router-outlet>
+    </div>
+  </div>
+</div>

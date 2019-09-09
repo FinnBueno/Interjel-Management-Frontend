@@ -1,0 +1,67 @@
+<div *ngIf="selected !== undefined">
+  <div class="modal-header bg-body">
+    <h5 class="modal-title" id="showMemberLabel">Lid overzicht</h5>
+    <button class="close" type="button" data-dismiss="modal" aria-labelledby="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body widget">
+    <div class="row">
+      <div class="col-sm-10">
+        <h6><span class="display-4">{{selected.getFullName()}}</span> <i style="vertical-align: 20%;" *ngIf="selected.type === 1" class="fa fa-2x fa-fw fa-crown ml-3"></i></h6>
+      </div>
+      <div class="col-sm-2 text-right">
+        <div class="dropdown">
+          <a class="p-3" style="cursor: pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i style="font-size: 20px;" class="mt-3 fa fa-fw fa-ellipsis-v"></i></a>
+          <div class="dropdown-menu">
+            <a class="clickable dropdown-item" (click)="archive()">{{selected.archived ? 'Herstel lid' : 'Archiveer lid'}}</a>
+            <a *ngIf="!selected.archived"  class="clickable dropdown-item" (click)="promote()">Maak {{selected.type === 1 ? 'normaal lid' : 'bestuurs lid'}}</a>
+            <a *ngIf="!selected.archived" class="clickable dropdown-item" (click)="createAccount()">Maak account</a>
+            <a *ngIf="!selected.paidContribution" class="clickable dropdown-item" (click)="payContribution()">Registreer contributie</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="m-2" *ngIf="selected.paymentStatus !== 0 && !selected.archived">
+      <div class="label bg-warning" *ngIf="selected.paymentStatus === 1">
+        Deze persoon heeft nog niet betaald.
+      </div>
+      <div class="label bg-danger" *ngIf="selected.paymentStatus === 2">
+        Deze persoon is te laat met betalen.
+      </div>
+    </div>
+    <hr/>
+    <div class="m-3">
+      <p>
+        <i class="fa fa-fw fa-envelope mr-1"></i>
+        <span contenteditable="true" (blur)="save($event)" field="email">
+        {{selected.email}}
+      </span>
+      </p>
+      <p><i class="fa fa-fw fa-birthday-cake mr-1"></i>{{selected.dateOfBirth | date: 'longDate'}} - {{selected.age}} jaar</p>
+      <p>
+        <i class="fa fa-fw fa-home mr-1"></i>
+        <span contenteditable="true" (blur)="save($event)" field="address">
+        {{selected.address}}
+      </span>,
+        <span contenteditable="true" (blur)="save($event)" field="postalCode">
+        {{selected.postalCode}}
+      </span>,
+        <span contenteditable="true" (blur)="save($event)" field="town">
+        {{selected.town}}
+      </span>
+      </p>
+      <p>
+        <i class="fa fa-fw fa-phone mr-1"></i>
+        <span contenteditable="true" (blur)="save($event)" field="phone">
+        {{selected.phone}}
+      </span>
+      </p>
+      <p><i class="fa fa-fw fa-beer mr-1"></i>Bezoeken: {{selected.visits}}</p>
+      <p><i class="fa fa-fw fa-sticky-note mr-1"></i>Notities:</p>
+      <textarea class="form-control bg-body" style="border-width: 0; color: white;" rows="3" title="">{{selected.notes}}</textarea>
+    </div>
+  </div>
+  <div class="modal-footer bg-body">
+  </div>
+</div>

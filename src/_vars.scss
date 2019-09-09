@@ -1,0 +1,54 @@
+/*
+dark_clr1: 41, 49, 68
+dark_clr2: 50, 58, 81
+
+main_clr0: 25, 61, 155
+main_clr1: 30, 74, 195
+main_clr2: 30, 98, 235
+main_clr3: 55, 113, 238
+
+text_clr1: 253, 255, 254
+text_clr3: 105, 115, 142
+text_clr2: 111, 122, 145
+ */
+$body-bg: rgb(41, 49, 68);
+$widget-bg: rgb(50, 58, 81);
+
+$text_clr1: rgb(253, 255, 254);
+$text_clr2: rgb(111, 122, 145);
+$text_clr3: rgb(105, 115, 142);
+
+// modifying bootstrap
+$theme-colors: (
+  "primary_darker": rgb(25, 61, 155),
+  "primary_dark": rgb(30, 74, 195),
+  "primary": rgb(30, 98, 235),
+  "secondary": rgb(75, 114, 138),
+  "widget": $widget-bg,
+  "body": $body-bg
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,//800px,
+  md: 768px,
+  lg: 1200px,//1000px,
+  xl: 1400px//1280px
+);
+
+$navigation-widths: (
+  xs: 250px,
+  sm: 250px,
+  md: 300px,
+  lg: 350px,
+  xl: 400px,
+);
+
+$container-max-widths: (
+  sm: 100%,
+  md: 960px,
+  lg: 960px,
+  xl: 1000px
+);
+
+$headerHeight: 80px;

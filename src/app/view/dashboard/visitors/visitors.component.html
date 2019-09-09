@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex">
+        <button class="btn btn-primary btn-lg ml-auto" data-toggle="modal" data-target="#startEvening">Start avond</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="mb-3 mt-4">
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-xl-3 col-md-6 col-sm-12" *ngFor="let evening of getInstances()">
+      <div class="card bg-widget mb-3 clickable" (click)="openInstanceOverview(evening)" data-toggle="modal" data-target="#modal">
+        <div class="active-icon" *ngIf="evening.isOngoing()"><i class="fas fa-3x fa-beer"></i></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto mr-auto">
+              <h4 class="card-title">{{evening.date | dateFormat: 'EEEE dd MMMM yyyy'}}</h4>
+            </div>
+          </div>
+          <p class="card-text">{{evening.date | dateFormat: 'HH:mm'}}<span *ngIf="evening.hasEnded()"> t/m {{evening.endDate | dateFormat: 'HH:mm'}}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start Instance Modal -->
+<app-start-evening></app-start-evening>

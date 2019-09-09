@@ -1,0 +1,26 @@
+<div class="row mt-4">
+  <div class="mx-auto mt-4">
+      <div class="card bg-danger invert mt-4" *ngIf="errorMessage !== undefined">
+        <div class="card-body">
+          <p class="card-text text-center">{{errorMessage}}</p>
+        </div>
+      </div>
+    <div class="card invert mt-4" style="width: 400px;">
+      <div class="card-body">
+        <h3 class="card-title">Login</h3>
+        <form>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input class="form-control" type="text" name="email" id="email" [(ngModel)]="email" [disabled]="loading">
+          </div>
+          <div class="form-group">
+            <label for="password">Wachtwoord</label>
+            <input class="form-control" type="password" name="password" id="password" [(ngModel)]="password" [disabled]="loading">
+          </div>
+          <button class="btn btn-primary" (click)="login()" [disabled]="loading">Login</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

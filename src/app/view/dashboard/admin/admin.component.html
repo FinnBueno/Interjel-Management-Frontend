@@ -1,0 +1,14 @@
+<div class="row">
+
+  <div class="col-12">
+    <h3 class="display-4">Seizoen</h3>
+  </div>
+  <div class="col-12">
+    <p>Leden betalen een contributie bedrag van 15,00 euro per seizoen. Wanneer een nieuw seizoen wordt gestart, wordt de status van iedereen terug gezet op niet betaald.</p>
+    <p>Huidig seizoen is gestart op <b>{{currentSeason | dateFormat: 'EEEE dd MMMM yyyy'}}</b>.</p>
+    <button class="btn btn-lg btn-danger" (click)="startNewSeason()">Start nieuw seizoen</button>
+  </div>
+
+</div>
+
+<hr class="mb-3 mt-4">

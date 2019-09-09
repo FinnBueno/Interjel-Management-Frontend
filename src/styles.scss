@@ -1,1 +1,94 @@
-/* You can add global styles to this file, and also import other style files */
+@import "_vars";
+
+// custom rules
+div, .text, p, h1, h2, h3, h4, h5, h6 {
+  color: $text_clr1;
+}
+
+.invert h1, .invert h2, .invert h3, .invert h4, .invert h5, .invert h6, .invert label {
+  color: black;
+}
+
+.text-second {
+  color: $text_clr2;
+}
+
+.text-third {
+  color: $text_clr3;
+}
+
+.widget {
+  background-color: $widget-bg;
+}
+
+p.primary {
+  color: map-get($theme-colors, "primary");
+}
+
+hr {
+  background-color: lighten($widget-bg, 10);
+}
+
+div {
+  outline: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.modal-header.bg-body,
+.modal-footer.bg-body {
+  border-width: 0;
+  border-radius: 3px;
+}
+
+.mailto {
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
+
+.fa-crown {
+  color: rgb(252, 225, 17);
+}
+
+.label {
+  background-color: map-get($theme-colors, "primary");
+  padding: 12px 20px;
+  border-radius: 3px;
+  font-weight: 700;
+  &::before {
+    font-family: "Font Awesome 5 Free", serif;
+    font-weight: 900;
+    content: "\f12a\ ";
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+input.inline-edit {
+  border-radius: 3px;
+  color: white;
+  background-color: map-get($theme-colors, 'body');
+  outline: none;
+  border-width: 0;
+}
+
+.modal-dialog {
+  height: 400px;
+}
+
+
+// import bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+// $fa-font-path: "../node_modules/font-awesome/fonts";
+// @import "../node_modules/font-awesome/scss/font-awesome.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
