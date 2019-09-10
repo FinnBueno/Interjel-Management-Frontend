@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'not-sure-yet'
+  apiUrl: 'https://interjel-management-backend.herokuapp.com/interjel/'
 };

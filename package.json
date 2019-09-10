@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -11,11 +11,17 @@
     "preinstall": "npm install -g @angular/cli",
     "postinstall": "ng build --aot --prod"
   },
+  "engines": {
+    "node": "12.3.0",
+    "npm": "6.6.0"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.2.0",
+    "@angular/cli": "~7.2.2",
     "@angular/common": "~7.2.0",
     "@angular/compiler": "~7.2.0",
+    "@angular/compiler-cli": "~7.2.0",
     "@angular/core": "~7.2.0",
     "@angular/forms": "~7.2.0",
     "@angular/http": "~7.0.0",
@@ -28,11 +34,14 @@
     "bootstrap": "^4.3.1",
     "bootstrap-datepicker": "^1.9.0",
     "core-js": "^2.5.4",
+    "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "medium-editor": "^5.23.3",
     "node-sass": "^4.12.0",
+    "path": "^0.12.7",
     "rxjs": "^6.5.3",
     "tslib": "^1.9.0",
+    "typescript": "~3.2.2",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -44,6 +53,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
+    "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.1.1",
