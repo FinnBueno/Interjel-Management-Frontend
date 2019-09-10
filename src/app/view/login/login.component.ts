@@ -24,14 +24,19 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loading = true;
+    console.log('Login 1');
     this.rest.post('auth', {
       email: this.email,
       password: this.password
     }).subscribe(
       (token) => {
+        console.log('Login 2');
         localStorage.setItem('interjelToken', token['token']);
+        console.log('Login 3', token['token']);
         localStorage.setItem('root', token['root']);
+        console.log('Login 4', token['root']);
         this.router.navigate(['/dashboard']);
+        console.log('Login 5', token['root']);
       },
       () => {
         this.errorMessage = 'Email of wachtwoord is fout.';
