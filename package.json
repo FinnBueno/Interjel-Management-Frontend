@@ -5,12 +5,12 @@
     "ng": "ng",
     "start": "node server.js",
     "dev": "ng serve",
-    "build": "ng build",
+    "build": "ng build --aot --prod",
+    "build-dev": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "preinstall": "npm install -g @angular/cli",
-    "postinstall": "ng build --aot --prod"
+    "preinstall": "npm install -g @angular/cli"
   },
   "engines": {
     "node": "12.3.0",
