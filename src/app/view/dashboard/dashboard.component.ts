@@ -10,7 +10,12 @@ import {navigateWidget} from '../../util/routing.util';
 })
 export class DashboardComponent {
 
-  pages = [];
+  pages = [
+    new Page('member', 'address-book', 'Leden'),
+    new Page('visitors', 'users', 'Bezoekers'),
+    // new Page('events', 'calendar', 'Evenementen'),
+    new Page('admin', 'desktop', 'Admin', true)
+  ];
 
   private _header: string;
   get header(): string {
@@ -22,14 +27,8 @@ export class DashboardComponent {
   }
 
   constructor(private router: Router, private route: ActivatedRoute) {
-    this.pages = [
-      new Page('member', 'address-book', 'Leden'),
-      new Page('visitors', 'users', 'Bezoekers'),
-      // new Page('events', 'calendar', 'Evenementen'),
-      new Page('admin', 'desktop', 'Admin', true)
-    ];
     if (router.url.includes('(')) {
-      const targetPage = /\(\w+:(\w+)\)$/.exec(router.url)[1];
+      const targetPage = /(?<=widget:)\w+/.exec(router.url)[0];
       const index = this.pages.findIndex(page => page.name === targetPage);
       this.navigate(this.pages[index]);
     } else {
