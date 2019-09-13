@@ -32,8 +32,10 @@ export class MemberOverviewComponent implements OnInit {
   }
 
   save(event: Event) {
+    console.log(event);
     const field = event.srcElement.getAttribute('field');
-    const value = event.srcElement.innerHTML.trim();
+    const value = event.target.value;
+    console.log(field, value);
     this.members.save(this.selected, field, value);
   }
 

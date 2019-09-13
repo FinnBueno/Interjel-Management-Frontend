@@ -87,7 +87,7 @@ export class MemberResource extends Persistence<Member> {
   }
 
   save(member: Member, field: string, value: any) {
-    console.log('Changing ' + member);
+    console.log('Changing ' + member.id);
     this.rest.put(`member/${member.id}`, {
       field: field,
       value: field === 'phone' ? +value : value
