@@ -32,9 +32,9 @@ export class MemberOverviewComponent implements OnInit {
   }
 
   save(event: Event) {
-    console.log(event);
-    const field = event.srcElement.getAttribute('field');
-    const value = event.target.value;
+    const target = <Element>event.target;
+    const field = target.getAttribute('field');
+    const value = target['value'];
     console.log(field, value);
     this.members.save(this.selected, field, value);
   }
